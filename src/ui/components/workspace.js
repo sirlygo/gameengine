@@ -5,8 +5,8 @@ export function createWorkspace() {
   const header = document.createElement('header');
   header.className = 'workspace-header';
   header.innerHTML = `
-    <h2>Map Workspace</h2>
-    <p>Canvas + editing tools will be added in v0.2.</p>
+    <h2 id="workspace-map-name">Map Workspace</h2>
+    <p id="workspace-map-meta">Canvas + editing tools will be added in v0.2.</p>
   `;
 
   const canvasPlaceholder = document.createElement('div');
@@ -20,6 +20,8 @@ export function createWorkspace() {
 
   return {
     root,
-    canvasPlaceholder
+    canvasPlaceholder,
+    mapNameNode: header.querySelector('#workspace-map-name'),
+    mapMetaNode: header.querySelector('#workspace-map-meta')
   };
 }
