@@ -14,7 +14,14 @@ export function createSidebar(appState) {
 
   appState.project.maps.forEach((map) => {
     const item = document.createElement('li');
-    item.textContent = `🗺 ${map.name}`;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'tree-item-button';
+    button.dataset.action = 'select-map';
+    button.dataset.mapId = map.id;
+    button.setAttribute('aria-pressed', 'false');
+    button.textContent = `🗺 ${map.name}`;
+    item.appendChild(button);
     mapsList.appendChild(item);
   });
 
@@ -30,4 +37,16 @@ export function createSidebar(appState) {
   root.append(title, projectNode);
 
   return { root };
+}
+
+export function bindSidebarActions({ container, onSelectMap }) {
+  container.addEventListener('click', (event) => {
+    const mapButton = event.target.closest('button[data-action="select-map"][data-map-id]');
+
+    if (!mapButton) {
+      return;
+    }
+
+    onSelectMap(mapButton.dataset.mapId);
+  });
 }

@@ -98,6 +98,12 @@ body {
   cursor: pointer;
 }
 
+.tool-button.active,
+.tree-item-button.active {
+  background: rgb(82 167 255 / 18%);
+  border-color: var(--accent);
+}
+
 .menu-list button {
   width: 100%;
   text-align: left;
@@ -144,6 +150,25 @@ body {
   margin: 0;
   padding-left: 1rem;
   color: var(--text);
+}
+
+.tree-list li {
+  margin: 0.2rem 0;
+}
+
+.tree-item-button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
+}
+
+.tree-item-button:hover {
+  background: var(--panel-light);
 }
 
 .workspace {
